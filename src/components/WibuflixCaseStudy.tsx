@@ -3,15 +3,12 @@
 import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 
 const screens = [
   { label: "Home", detail: "Latest anime & tokusatsu", src: "/images/wibuflix/home-latest.jpg" },
-  { label: "Home · more", detail: "Recommendations", src: "/images/wibuflix/home-recommendations.jpg" },
   { label: "Catalog", detail: "Browse the library", src: "/images/wibuflix/catalog-top.jpg" },
-  { label: "Catalog · more", detail: "More titles", src: "/images/wibuflix/catalog-scrolled.jpg" },
   { label: "History", detail: "Continue tracking episodes", src: "/images/wibuflix/history.jpg" },
-  { label: "Completed", detail: "Finished episodes", src: "/images/wibuflix/completed.jpg" },
 ];
 
 interface WibuflixCaseStudyProps {
@@ -74,24 +71,21 @@ export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
             <div className="flex items-center justify-between gap-3">
               <div>
                 <h3 className="text-base font-semibold text-white">Mobile app</h3>
-                <p className="text-xs text-[var(--text-muted)]">Choose a screen and scroll the preview.</p>
+                <p className="text-xs text-[var(--text-muted)]">Choose a screen to preview.</p>
               </div>
-              <span className="hidden items-center gap-1 text-[11px] text-zinc-500 sm:flex"><ArrowDown className="h-3 w-3" /> Scroll</span>
             </div>
 
             <div className="mt-3 flex justify-center rounded-xl border border-[var(--border)] bg-[#111113] p-3">
-              <div className="w-[min(100%,190px)] rounded-[1.6rem] border-[6px] border-[#252529] bg-black p-1 shadow-xl">
-                <div className="h-[min(36dvh,300px)] min-h-[180px] overflow-y-auto overscroll-contain rounded-[1.25rem] bg-black [scrollbar-color:#52525b_transparent] [scrollbar-width:thin]">
-                  <Image
-                    key={screens[activeScreen].src}
-                    src={screens[activeScreen].src}
-                    alt={`${screens[activeScreen].label} screen of the Wibuflix mobile app`}
-                    width={260}
-                    height={593}
-                    className="block h-auto w-full"
-                    priority
-                  />
-                </div>
+              <div className="w-[min(100%,190px)] overflow-hidden rounded-[1.6rem] border-[6px] border-[#252529] bg-black p-1 shadow-xl">
+                <Image
+                  key={screens[activeScreen].src}
+                  src={screens[activeScreen].src}
+                  alt={`${screens[activeScreen].label} screen of the Wibuflix mobile app`}
+                  width={260}
+                  height={593}
+                  className="block h-auto w-full rounded-[1.25rem]"
+                  priority
+                />
               </div>
             </div>
 

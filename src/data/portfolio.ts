@@ -39,7 +39,7 @@ export interface PortfolioData {
 export const portfolioData: PortfolioData = {
   personal: {
     name: "Rafi Fauzan Hermansah",
-    headline: "Information Systems Student @ Telkom University | Web & Mobile Developer",
+    headline: "Information Systems Student at Telkom University | Web & Mobile Developer",
     bio: "D3 Sistem Informasi student at Telkom University, Bandung. Building responsive full-stack applications and cross-platform mobile experiences with React Native, TypeScript, Node.js, and modern cloud architecture.",
     location: "Bandung, Indonesia",
     email: "rafifauzanhermansah@gmail.com",

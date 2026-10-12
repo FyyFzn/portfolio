@@ -59,7 +59,7 @@ export function Projects({ projects }: ProjectsProps) {
                   <button
                     type="button"
                     onClick={() => setShowWibuflixCaseStudy(true)}
-                    className="text-left focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                    className="cursor-pointer text-left focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                     aria-haspopup="dialog"
                   >
                     {project.title}
@@ -78,9 +78,9 @@ export function Projects({ projects }: ProjectsProps) {
                   type="button"
                   onClick={() => setShowWibuflixCaseStudy(true)}
                   aria-haspopup="dialog"
-                  className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-white transition hover:text-zinc-300 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  className="inline-flex min-h-12 w-full items-center justify-between rounded-lg bg-white px-4 text-sm font-semibold text-black transition hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
-                  Explore the project
+                  View project details
                   <ArrowUpRight className="h-4 w-4" />
                 </button>
               )}

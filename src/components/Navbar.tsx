@@ -19,10 +19,10 @@ export function Navbar({ name }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <a href="#" className="flex items-center gap-2.5 font-semibold tracking-tight text-zinc-100 hover:text-white transition-colors">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface-raised)] text-white">
             <Code2 className="h-4 w-4" />
           </div>
           <span>{name}</span>
@@ -34,14 +34,14 @@ export function Navbar({ name }: NavbarProps) {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-100"
+              className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="rounded-full bg-zinc-100 px-4 py-1.5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-200"
+            className="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-black transition hover:bg-zinc-200 active:scale-95"
           >
             Get in touch
           </a>
@@ -51,7 +51,7 @@ export function Navbar({ name }: NavbarProps) {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation menu"
-          className="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100 md:hidden transition-colors"
+          className="rounded-lg p-2 text-zinc-400 hover:bg-[var(--surface-interactive)] hover:text-white md:hidden transition-colors"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -59,14 +59,14 @@ export function Navbar({ name }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="border-b border-zinc-800 bg-zinc-950 px-6 py-4 md:hidden">
+        <div className="border-b border-[var(--border)] bg-[var(--background)] px-6 py-4 md:hidden">
           <nav className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors"
+                className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
               >
                 {link.label}
               </a>
@@ -74,7 +74,7 @@ export function Navbar({ name }: NavbarProps) {
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="mt-2 inline-flex justify-center rounded-lg bg-zinc-100 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-200 transition-colors"
+              className="mt-2 inline-flex justify-center rounded-lg bg-white py-2 text-sm font-medium text-black hover:bg-zinc-200 transition-colors"
             >
               Get in touch
             </a>

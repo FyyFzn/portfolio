@@ -11,9 +11,9 @@ export default function Home() {
   const { personal, projects, skills, experiences } = portfolioData;
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 antialiased">
+    <div className="app-container min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 antialiased">
       <Navbar name={personal.name} />
-      <main className="mx-auto max-w-5xl px-6 pb-20">
+      <main className="main-content mx-auto max-w-5xl px-6 pb-20">
         <Hero personal={personal} />
         <Projects projects={projects} />
         <Skills skills={skills} />

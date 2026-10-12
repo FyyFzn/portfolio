@@ -34,7 +34,16 @@ export function Projects({ projects }: ProjectsProps) {
             key={project.id}
             className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--surface-raised)] p-6 transition-all duration-200 hover:border-[var(--border-hover)] hover:shadow-lg hover:shadow-white/5 active:scale-[0.99]"
           >
-            <div>
+            {project.id === "wibuflix" && (
+              <button
+                type="button"
+                onClick={() => setShowWibuflixCaseStudy(true)}
+                aria-label="Open Wibuflix project details"
+                aria-haspopup="dialog"
+                className="absolute inset-0 z-0 cursor-pointer rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              />
+            )}
+            <div className={`relative z-10 ${project.id === "wibuflix" ? "pointer-events-none" : ""}`}>
               <div className="flex items-center justify-between gap-2 mb-3">
                 {project.badge && (
                   <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold text-white">
@@ -55,16 +64,7 @@ export function Projects({ projects }: ProjectsProps) {
               </div>
 
               <h3 className="text-xl font-bold text-zinc-100 group-hover:text-white transition-colors">
-                {project.id === "wibuflix" ? (
-                  <button
-                    type="button"
-                    onClick={() => setShowWibuflixCaseStudy(true)}
-                    className="cursor-pointer text-left focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                    aria-haspopup="dialog"
-                  >
-                    {project.title}
-                  </button>
-                ) : project.title}
+                {project.title}
               </h3>
 
               <p className="mt-2.5 text-sm leading-relaxed text-[var(--text-muted)]">
@@ -72,19 +72,7 @@ export function Projects({ projects }: ProjectsProps) {
               </p>
             </div>
 
-            <div className="mt-6 flex flex-col gap-4">
-              {project.id === "wibuflix" && (
-                <button
-                  type="button"
-                  onClick={() => setShowWibuflixCaseStudy(true)}
-                  aria-haspopup="dialog"
-                  className="inline-flex min-h-12 w-full items-center justify-between rounded-lg bg-white px-4 text-sm font-semibold text-black transition hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  View project details
-                  <ArrowUpRight className="h-4 w-4" />
-                </button>
-              )}
-
+            <div className={`relative z-10 mt-6 flex flex-col gap-4 ${project.id === "wibuflix" ? "pointer-events-none" : ""}`}>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -104,7 +92,7 @@ export function Projects({ projects }: ProjectsProps) {
                       href={repository.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-white"
+                      className="relative z-20 inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-white pointer-events-auto"
                     >
                       <GithubIcon className="h-3.5 w-3.5" />
                       <span>{repository.label}</span>
@@ -116,7 +104,7 @@ export function Projects({ projects }: ProjectsProps) {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-white"
+                      className="relative z-20 inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-white pointer-events-auto"
                     >
                       <GithubIcon className="h-3.5 w-3.5" />
                       <span>View Repository</span>

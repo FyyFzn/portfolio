@@ -16,9 +16,6 @@ export function Skills({ skills }: SkillsProps) {
         <h2 className="text-3xl font-bold tracking-tight text-white">
           Skills & Technologies
         </h2>
-        <p className="text-[var(--text-muted)] max-w-xl">
-          Core technical proficiencies across frontend architecture, server environments, and engineering tools.
-        </p>
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

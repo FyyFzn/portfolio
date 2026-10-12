@@ -1,4 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import { FolderGit2, ArrowUpRight } from "lucide-react";
+import { WibuflixCaseStudy } from "./WibuflixCaseStudy";
 import { GithubIcon } from "./Icons";
 import { Project } from "@/data/portfolio";
 
@@ -7,6 +11,8 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects }: ProjectsProps) {
+  const [showWibuflixCaseStudy, setShowWibuflixCaseStudy] = useState(false);
+
   return (
     <section id="projects" className="py-16 border-t border-[var(--border)] fade-in">
       <div className="flex flex-col gap-2">
@@ -18,7 +24,7 @@ export function Projects({ projects }: ProjectsProps) {
           Featured Projects
         </h2>
         <p className="text-[var(--text-muted)] max-w-xl">
-          Independent and coursework projects demonstrating full-stack architecture, cross-platform mobile UI, and backend services.
+          Personal and academic work across mobile apps, backend services, and web development.
         </p>
       </div>
 
@@ -49,7 +55,16 @@ export function Projects({ projects }: ProjectsProps) {
               </div>
 
               <h3 className="text-xl font-bold text-zinc-100 group-hover:text-white transition-colors">
-                {project.title}
+                {project.id === "wibuflix" ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowWibuflixCaseStudy(true)}
+                    className="text-left focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                    aria-haspopup="dialog"
+                  >
+                    {project.title}
+                  </button>
+                ) : project.title}
               </h3>
 
               <p className="mt-2.5 text-sm leading-relaxed text-[var(--text-muted)]">
@@ -58,6 +73,18 @@ export function Projects({ projects }: ProjectsProps) {
             </div>
 
             <div className="mt-6 flex flex-col gap-4">
+              {project.id === "wibuflix" && (
+                <button
+                  type="button"
+                  onClick={() => setShowWibuflixCaseStudy(true)}
+                  aria-haspopup="dialog"
+                  className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-white transition hover:text-zinc-300 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  Explore the project
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+              )}
+
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -69,22 +96,42 @@ export function Projects({ projects }: ProjectsProps) {
                 ))}
               </div>
 
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-white pt-3 border-t border-[var(--border)]"
-                >
-                  <GithubIcon className="h-3.5 w-3.5" />
-                  <span>View Repository</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+              {(project.repositoryLinks?.length || project.githubUrl) && (
+                <div className="flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-3">
+                  {project.repositoryLinks?.map((repository) => (
+                    <a
+                      key={repository.url}
+                      href={repository.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-white"
+                    >
+                      <GithubIcon className="h-3.5 w-3.5" />
+                      <span>{repository.label}</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </a>
+                  ))}
+                  {!project.repositoryLinks && project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-white"
+                    >
+                      <GithubIcon className="h-3.5 w-3.5" />
+                      <span>View Repository</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           </div>
         ))}
       </div>
+      {showWibuflixCaseStudy && (
+        <WibuflixCaseStudy onClose={() => setShowWibuflixCaseStudy(false)} />
+      )}
     </section>
   );
 }

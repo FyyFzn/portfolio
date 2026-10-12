@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   tags: string[];
   githubUrl?: string;
+  repositoryLinks?: { label: string; url: string }[];
   liveUrl?: string;
   featured?: boolean;
 }
@@ -17,7 +18,7 @@ export interface SkillGroup {
 export interface Experience {
   role: string;
   organization: string;
-  period: string;
+  period?: string;
   description: string;
 }
 
@@ -62,23 +63,16 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
-      id: "wibuflix-app",
-      title: "Wibuflix App",
-      badge: "Mobile App",
+      id: "wibuflix",
+      title: "Wibuflix",
+      badge: "Personal project",
       description:
-        "Cross-platform mobile streaming application built with React Native and Expo Router. Features catalog navigation, custom UI components, media playback integration, and responsive layout.",
-      tags: ["React Native", "Expo", "TypeScript", "Mobile UI"],
-      githubUrl: "https://github.com/FyyFzn/wibuflix-app",
-      featured: true,
-    },
-    {
-      id: "wibuflix-backend",
-      title: "Wibuflix Backend & Media Pipeline",
-      badge: "Backend & Cloud",
-      description:
-        "Scalable streaming backend and ingestion service. Implements REST API endpoints, Docker containerization, video streaming pipeline, and cloud storage integration with Azure Blob Storage.",
-      tags: ["Node.js", "Express", "Docker", "Azure", "REST API"],
-      githubUrl: "https://github.com/FyyFzn/wibuflix",
+        "A deployed anime streaming project built for personal use, with a React Native app and a separate Node.js/Express server. The app and backend are both functional; access is currently private to me.",
+      tags: ["React Native", "Expo", "TypeScript", "Node.js", "Express", "Azure"],
+      repositoryLinks: [
+        { label: "Server repository", url: "https://github.com/FyyFzn/wibuflix" },
+        { label: "App repository", url: "https://github.com/FyyFzn/wibuflix-app" },
+      ],
       featured: true,
     },
     {
@@ -96,7 +90,6 @@ export const portfolioData: PortfolioData = {
     {
       role: "D3 Sistem Informasi (Information Systems)",
       organization: "Telkom University, Bandung",
-      period: "Undergraduate / Diploma",
       description:
         "Studying software engineering, database management systems, web applications, and system analysis. Actively developing hands-on independent projects alongside academic coursework.",
     },

@@ -15,15 +15,15 @@ interface HeroProps {
 
 export function Hero({ personal }: HeroProps) {
   return (
-    <section id="about" className="pt-20 pb-16 md:pt-28 md:pb-24 fade-in">
+    <section id="about" className="pt-20 pb-20 md:pt-32 md:pb-28 fade-in">
       <div className="flex flex-col gap-6">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            {personal.headline}
-          </h2>
-          <h1 className="mt-3 text-2xl font-bold text-zinc-400 sm:text-3xl md:text-4xl">
-            Hi, I'm <span className="text-white">{personal.name}</span>
+        <div className="max-w-4xl">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+            {personal.name}
           </h1>
+          <p className="mt-4 text-lg font-medium leading-relaxed text-zinc-300 sm:text-xl">
+            {personal.headline}
+          </p>
         </div>
 
         <p className="max-w-2xl text-base leading-relaxed text-[var(--text-muted)]">

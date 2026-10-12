@@ -14,11 +14,8 @@ export function Experience({ experiences }: ExperienceProps) {
           <span>Academic Background</span>
         </div>
         <h2 className="text-3xl font-bold tracking-tight text-white">
-          Education & Trajectory
+          Education
         </h2>
-        <p className="text-[var(--text-muted)] max-w-xl">
-          Formal academic foundation and software engineering trajectory.
-        </p>
       </div>
 
       <div className="relative mt-8 border-l border-[var(--border)] pl-6 space-y-8">
@@ -30,9 +27,11 @@ export function Experience({ experiences }: ExperienceProps) {
               <h3 className="text-lg font-semibold text-zinc-100">
                 {exp.role}
               </h3>
-              <span className="text-xs font-medium text-zinc-400 sm:text-right">
-                {exp.period}
-              </span>
+              {exp.period && (
+                <span className="text-xs font-medium text-zinc-400 sm:text-right">
+                  {exp.period}
+                </span>
+              )}
             </div>
             <p className="text-sm font-medium text-white mt-0.5">
               {exp.organization}

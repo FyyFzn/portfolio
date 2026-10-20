@@ -20,12 +20,12 @@ export function Navbar({ name }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2.5 font-semibold tracking-tight text-zinc-100 hover:text-white transition-colors">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface-raised)] text-white">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
+        <a href="#" className="flex min-w-0 items-center gap-2.5 font-semibold tracking-tight text-zinc-100 hover:text-white transition-colors">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface-raised)] text-white">
             <Code2 className="h-4 w-4" />
           </div>
-          <span>{name}</span>
+          <span className="truncate">{name}</span>
         </a>
 
         {/* Desktop Nav */}
@@ -51,7 +51,7 @@ export function Navbar({ name }: NavbarProps) {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation menu"
-          className="rounded-lg p-2 text-zinc-400 hover:bg-[var(--surface-interactive)] hover:text-white md:hidden transition-colors"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-zinc-400 hover:bg-[var(--surface-interactive)] hover:text-white md:hidden transition-colors"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -59,7 +59,7 @@ export function Navbar({ name }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="border-b border-[var(--border)] bg-[var(--background)] px-6 py-4 md:hidden">
+        <div className="border-b border-[var(--border)] bg-[var(--background)] px-4 py-4 sm:px-6 md:hidden">
           <nav className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <a

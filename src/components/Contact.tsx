@@ -17,17 +17,17 @@ export function Contact({ email, universityEmail, github }: ContactProps) {
             <span>Connect</span>
           </div>
           <h2 className="contact-heading mt-2 text-3xl font-bold tracking-tight text-white">
-            Let's build something great together.
+            Let&apos;s build something great together.
           </h2>
           <p className="contact-description mt-3 text-[var(--text-muted)]">
             Open for project discussions, academic collaborations, or software development opportunities.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             {email && (
               <a
                 href={`mailto:${email}`}
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-zinc-200 active:scale-95"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-zinc-200 active:scale-95 sm:w-auto sm:justify-start"
               >
                 <Mail className="h-4 w-4" />
                 <span>Personal Email</span>
@@ -38,7 +38,7 @@ export function Contact({ email, universityEmail, github }: ContactProps) {
             {universityEmail && (
               <a
                 href={`mailto:${universityEmail}`}
-                className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-interactive)] px-5 py-3 text-sm font-medium text-white transition hover:border-white/50 hover:text-white"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-interactive)] px-5 py-3 text-sm font-medium text-white transition hover:border-white/50 hover:text-white sm:w-auto sm:justify-start"
               >
                 <GraduationCap className="h-4 w-4 text-white" />
                 <span>Tel-U Email</span>
@@ -50,7 +50,7 @@ export function Contact({ email, universityEmail, github }: ContactProps) {
                 href={github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-interactive)] px-5 py-3 text-sm font-medium text-white transition hover:border-white/50 hover:text-white"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-interactive)] px-5 py-3 text-sm font-medium text-white transition hover:border-white/50 hover:text-white sm:w-auto sm:justify-start"
               >
                 <GithubIcon className="h-4 w-4" />
                 <span>GitHub Profile</span>

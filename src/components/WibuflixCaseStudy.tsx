@@ -17,10 +17,8 @@ interface WibuflixCaseStudyProps {
 
 export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
   const [activeScreen, setActiveScreen] = useState(0);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKeyDown = (event: KeyboardEvent) => {
@@ -33,7 +31,7 @@ export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
     };
   }, [onClose]);
 
-  if (!mounted) return null;
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <div

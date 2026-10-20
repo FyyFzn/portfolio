@@ -48,7 +48,7 @@ export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
       >
         <header className="flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4 sm:px-7">
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">Personal project · Deployed for personal use</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">Personal project · Deployed for personal use</p>
             <h2 id="wibuflix-case-title" className="mt-1 text-2xl font-bold tracking-tight text-white">Wibuflix</h2>
             <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)]">
               An Android app and server for personal anime and tokusatsu discovery and streaming.
@@ -64,7 +64,7 @@ export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
           </button>
         </header>
 
-        <div className="grid min-h-0 gap-5 overflow-y-auto p-4 sm:p-6 md:grid-cols-[minmax(0,1fr)_260px] md:gap-7">
+        <div className="grid min-h-0 gap-5 overflow-y-auto p-4 sm:p-6 md:grid-cols-[minmax(0,1fr)_300px] md:gap-7">
           <div className="min-w-0">
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -94,10 +94,14 @@ export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
                   type="button"
                   onClick={() => setActiveScreen(index)}
                   aria-pressed={activeScreen === index}
-                  className={`min-h-11 rounded-lg border px-2 py-1.5 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${activeScreen === index ? "border-white/50 bg-[var(--surface-interactive)]" : "border-[var(--border)] bg-[var(--surface-raised)] hover:border-[var(--border-hover)]"}`}
+                  className={`min-h-11 rounded-lg border px-2 py-1.5 text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                    activeScreen === index
+                      ? "border-white/60 bg-[var(--surface-interactive)] text-white shadow-sm ring-1 ring-white/20"
+                      : "border-[var(--border)] bg-[var(--surface-raised)] text-zinc-400 hover:border-[var(--border-hover)] hover:text-white"
+                  }`}
                 >
                   <span className="block truncate text-xs font-medium text-white">{screen.label}</span>
-                  <span className="mt-0.5 block truncate text-[10px] text-zinc-500">{screen.detail}</span>
+                  <span className="mt-0.5 block truncate text-xs text-zinc-400">{screen.detail}</span>
                 </button>
               ))}
             </div>
@@ -105,17 +109,17 @@ export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
 
           <aside className="min-w-0 border-t border-[var(--border)] pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
             <h3 className="text-base font-semibold text-white">How it works</h3>
-            <ol className="mt-3 space-y-3">
+            <ol className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-1">
               {[
                 ["01", "Mobile app", "Searches and browses content."],
                 ["02", "API request", "Requests catalog or episode data."],
                 ["03", "Wibuflix server", "Scrapes providers and returns results."],
                 ["04", "Playback", "Playback requests are handled through the server."],
               ].map(([number, title, description]) => (
-                <li key={number} className="flex gap-3 border-b border-[var(--border)] pb-3 last:border-0">
-                  <span className="pt-0.5 font-mono text-[10px] text-zinc-500">{number}</span>
-                  <div>
-                    <p className="text-sm font-medium text-white">{title}</p>
+                <li key={number} className="flex items-start gap-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface-raised)] px-3 py-2.5">
+                  <span className="pt-0.5 font-mono text-xs text-zinc-500">{number}</span>
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold text-white">{title}</p>
                     <p className="mt-0.5 text-xs leading-relaxed text-[var(--text-muted)]">{description}</p>
                   </div>
                 </li>
@@ -123,18 +127,30 @@ export function WibuflixCaseStudy({ onClose }: WibuflixCaseStudyProps) {
             </ol>
 
             <dl className="mt-4 grid grid-cols-2 gap-3 text-xs">
-              <div><dt className="text-zinc-500">Status</dt><dd className="mt-1 text-zinc-200">Deployed</dd></div>
-              <div><dt className="text-zinc-500">Use</dt><dd className="mt-1 text-zinc-200">Personal only</dd></div>
-              <div><dt className="text-zinc-500">App</dt><dd className="mt-1 text-zinc-200">React Native · Expo</dd></div>
-              <div><dt className="text-zinc-500">Server</dt><dd className="mt-1 text-zinc-200">Node.js · Express</dd></div>
+              <div><dt className="text-zinc-500">Status</dt><dd className="mt-0.5 font-medium text-zinc-200">Deployed</dd></div>
+              <div><dt className="text-zinc-500">Visibility</dt><dd className="mt-0.5 font-medium text-zinc-200">Personal use only</dd></div>
+              <div><dt className="text-zinc-500">App</dt><dd className="mt-0.5 font-medium text-zinc-200">React Native · Expo</dd></div>
+              <div><dt className="text-zinc-500">Server</dt><dd className="mt-0.5 font-medium text-zinc-200">Node.js · Express</dd></div>
             </dl>
 
-            <div className="mt-5 flex flex-col gap-2">
-              <a href="https://github.com/FyyFzn/wibuflix" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-between rounded-lg bg-white px-3 text-xs font-semibold text-black transition hover:bg-zinc-200">
-                Server repository <ArrowUpRight className="h-4 w-4" />
+            <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+              <a
+                href="https://github.com/FyyFzn/wibuflix"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 flex-1 items-center justify-between rounded-lg bg-white px-3 text-xs font-semibold text-black transition hover:bg-zinc-200"
+              >
+                <span>Server repository</span>
+                <ArrowUpRight className="h-4 w-4" />
               </a>
-              <a href="https://github.com/FyyFzn/wibuflix-app" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-between rounded-lg border border-[var(--border)] bg-[var(--surface-raised)] px-3 text-xs font-semibold text-white transition hover:bg-[var(--surface-interactive)]">
-                App repository <ArrowUpRight className="h-4 w-4" />
+              <a
+                href="https://github.com/FyyFzn/wibuflix-app"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 flex-1 items-center justify-between rounded-lg border border-[var(--border)] bg-[var(--surface-raised)] px-3 text-xs font-semibold text-white transition hover:bg-[var(--surface-interactive)]"
+              >
+                <span>App repository</span>
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </aside>

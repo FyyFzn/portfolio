@@ -3,7 +3,7 @@ interface FooterProps {
 }
 
 export function Footer({ name }: FooterProps) {
-  const currentYear = 2026;
+  const currentYear = 2025;
 
   return (
     <footer className="border-t border-[var(--border)] py-8 text-center text-xs text-[var(--text-muted)]">
